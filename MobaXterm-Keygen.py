@@ -4,7 +4,7 @@
 # ------------------------------------------
 #   @author: Double Sine -- Thanks to the original author or authors!
 #   @License: GPLv3
-#   @date 2019-07-29 10:28:17 Generate license key for 'MobaXterm v12.0' to 'me'
+#   @date 2019-08-10 13:01:44 Generate license key for 'MobaXterm v12.1' to 'me'
 # ------------------------------------------
 import os
 import sys
@@ -98,15 +98,15 @@ def generate_license(license_type: int, user: str, major_version: int, minor_ver
     """
     Generate a license key file for MobaXterm
 
-    :param license_type: License Type: 1-Professional 3-Educational 4-Personal
+    :param license_type: License Type: 1-Professional, 3-Educational, 4-Personal
     :param user: licensee name, me etc.
     :param major_version: MobaXterm major version, 12 etc.
-    :param minor_version: MobaXterm minor version, 0, 0, etc.
+    :param minor_version: MobaXterm minor version, 0, 1, etc.
     :param count: licensee count
     :return: none
     """
     assert (count >= 0)
-    # lic_key: '1#me|120#1#123060#0#0#0#'
+    # lic_key: '1#me|121#1#123161#0#0#0#'
     lic_key = '%d#%s|%d%d#%d#%d3%d6%d#%d#%d#%d#' % (license_type,
                                                     user, major_version, minor_version,
                                                     count,
@@ -114,6 +114,7 @@ def generate_license(license_type: int, user: str, major_version: int, minor_ver
                                                     0,  # Unknown
                                                     0,  # No Games flag. 0 means "NoGames = false". But it does not work.
                                                     0)  # No Plugins flag. 0 means "NoPlugins = false". But it does not work.
+    print('[*] License key: %s' % lic_key)
     encoded_lic_key = variant_base64_encode(encrypt_bytes(0x787, lic_key.encode())).decode()
     with zipfile.ZipFile('Custom.mxtpro', 'w') as f:
         f.writestr('Pro.key', data=encoded_lic_key)
@@ -124,13 +125,13 @@ def print_help():
     print('    MobaXterm-Keygen.py <UserName> <Version>')
     print()
     print('    <UserName>:      The Name licensed to <me>')
-    print('    <Version>:       The Version of MobaXterm <12.0>')
+    print('    <Version>:       The Version of MobaXterm <12.1>')
     print()
 
 
 if __name__ == '__main__':
     """
-    $ python MobaXterm-Keygen.py me 12.0
+    $ python MobaXterm-Keygen.py me 12.1
     """
     if len(sys.argv) != 3:
         print_help()
