@@ -1,7 +1,6 @@
-Custom.mxtpro
+*.mxtpro
 
 ### PyCharm ###
 *.iml
 /.idea/*
-
 
