@@ -4,7 +4,7 @@ Generate license key for [MobaXterm](https://mobaxterm.mobatek.net/download-home
 
 ## How it work?
 
-Please see source code. It is not complex.
+It uses python 3 to generate a fake license.
 
 ## How To
 
